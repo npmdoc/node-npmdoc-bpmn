@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/e2ebridge/bpmn#readme"
-
-    >bpmn (v0.2.2)</a>
+    <a href="https://github.com/e2ebridge/bpmn#readme">bpmn (v0.2.2)</a>
 </h1>
 <h4>BPMN 2.0 execution engine</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.bpmn">module bpmn</a><ol>
 
@@ -1274,7 +1267,7 @@
 
     options.handlerFilePath.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.filePath){
-            throw new Error(&#x22;handlerFilePath needs a name and a filePath&#x22;);
+            throw new Error("handlerFilePath needs a name and a filePath");
         }
 
         self.addHandlerFilePath(handlerDescriptor.name, handlerDescriptor.filePath);
@@ -1291,7 +1284,7 @@
 
     options.handler.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.module){
-            throw new Error(&#x22;handler needs a name and a module&#x22;);
+            throw new Error("handler needs a name and a module");
         }
 
         self.addHandler(handlerDescriptor.name, handlerDescriptor.module);
@@ -1307,7 +1300,7 @@
 
     options.handlerString.forEach(function(handlerString){
         if(!handlerString.name || !handlerString.string){
-            throw new Error(&#x22;handlerString needs a name and a string&#x22;);
+            throw new Error("handlerString needs a name and a string");
         }
 
         self.addHandlerString(handlerString.name, handlerString.string);
@@ -1337,7 +1330,7 @@
 
     options.bpmnXML.forEach(function(bpmnXML){
         if(!bpmnXML.name || !bpmnXML.xml){
-            throw new Error(&#x22;bpmnXML needs a name and a xml&#x22;);
+            throw new Error("bpmnXML needs a name and a xml");
         }
 
         self.addBpmnXML(bpmnXML.xml, bpmnXML.name);
@@ -1353,12 +1346,12 @@ Process managers are used to create multiple processes using the same definition
 
     var manager = new bpmn.<span class="apidocCodeKeywordSpan">ProcessManager</span>();
 
-    manager.addBpmnFilePath(&#x22;path/to/myProcess.bpmn&#x22;);
+    manager.addBpmnFilePath("path/to/myProcess.bpmn");
 
-    manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
+    manager.createProcess("myId", function(err, myProcess){
 
 // we start the process
-myProcess.triggerEvent(&#x22;MyStart&#x22;);
+myProcess.triggerEvent("MyStart");
 ...</pre></li>
     </ul>
 
@@ -1484,7 +1477,7 @@ myProcess.triggerEvent(&#x22;MyStart&#x22;);
 
     self._definitionsToInitialize.push(processDefinition);
 
-    if(!self._initialising){    // if already initialising we don&#x27;t call next, the definition will be initialised after current
+    if(!self._initialising){    // if already initialising we don't call next, the definition will be initialised after current
 one.
         next();
     }
@@ -1542,7 +1535,7 @@ persisted document found
                     }
 
                     if(self._processCache[bpmnProcess.getProcessId()]){                  // check if id already used
-                        return done(new Error(&#x27;duplicated id in persisted data&#x27;));
+                        return done(new Error('duplicated id in persisted data'));
                     }
 
                     self._processCache[bpmnProcess.getProcessId()] = bpmnProcess;
@@ -1578,7 +1571,7 @@ persisted document found
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromFile(processHandler);
     }
 
@@ -1597,8 +1590,8 @@ persisted document found
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -1620,7 +1613,7 @@ persisted document found
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromString(processHandler);
     }
 
@@ -1631,8 +1624,8 @@ persisted document found
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -1709,15 +1702,15 @@ persisted document found
             return callback(err);
         }
 
-        if (typeof descriptors === &#x27;string&#x27; &#x26;&#x26; Object.keys(self._processDefinitions).length !== 1) {
-            return callback(new Error(&#x22;The manager contains more than one process definition. &#x22; +
-                &#x22;processId have to be an Array.&#x3c;{name: String, id: String}&#x3e;} &#x22;));
+        if (typeof descriptors === 'string' &amp;&amp; Object.keys(self._processDefinitions).length !== 1) {
+            return callback(new Error("The manager contains more than one process definition. " +
+                "processId have to be an Array.&lt;{name: String, id: String}&gt;} "));
         }
 
         if(util.isArray(descriptors)) {
             descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                 if(self._processCache[descriptor.id]){
-                    err = new Error(&#x27;id already used&#x27;);
+                    err = new Error('id already used');
                 }
             });
             if(err){
@@ -1731,7 +1724,7 @@ persisted document found
 
                 descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                     if(self._processCache[descriptor.id]){          // again because a process could have been created in between
-                        err = new Error(&#x27;id already used&#x27;);
+                        err = new Error('id already used');
                     }
                 });
                 if(err){
@@ -1747,7 +1740,7 @@ persisted document found
             return;
         }
 
-        if(typeof descriptors === &#x27;string&#x27;) {
+        if(typeof descriptors === 'string') {
             descriptors = {
                 id: descriptors,
                 name: Object.keys(self._processDefinitions)[0]
@@ -1755,7 +1748,7 @@ persisted document found
         }
 
         if(self._processCache[descriptors.id]){                                        // check if id already used
-            return callback(new Error(&#x27;id already used&#x27;));
+            return callback(new Error('id already used'));
         }
 
         self._createSingleProcess(descriptors.id, descriptors.name, function(err, bpmnProcess){
@@ -1764,7 +1757,7 @@ persisted document found
             }
 
             if(self._processCache[descriptors.id]){                                      // check if id already used
-                return callback(new Error(&#x27;id already used&#x27;));                      // again because a process could have been created
+                return callback(new Error('id already used'));                      // again because a process could have been created
  in between
             }
 
@@ -1803,7 +1796,7 @@ persisted document found
     <li>description and source-code<pre class="apidocCodePre">ProcessManager.prototype.findByName = function (processName, caseSensitive, callback) {
     var self = this;
 
-    if(typeof caseSensitive === &#x27;function&#x27;){
+    if(typeof caseSensitive === 'function'){
         callback = caseSensitive;
         caseSensitive = true;
     }
@@ -2034,12 +2027,12 @@ BPMN also supports collaborating processes as depicted below.
 These processes must be created together:
 
 	// create collaborating processes
-bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedCollaboratingProcesses</span>(&#x22;my/collaboration/example.bpmn&#x22;,
+bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedCollaboratingProcesses</span>("my/collaboration/example.bpmn",
 function(err, collaboratingProcesses){
 
     // start the second process
     var secondProcess = collaboratingProcesses[1];
-    secondProcess.triggerEvent(&#x22;Start Event 2&#x22;);
+    secondProcess.triggerEvent("Start Event 2");
 
 });
 ...</pre></li>
@@ -2058,7 +2051,7 @@ function(err, collaboratingProcesses){
     var processes = {};
     var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML);
 
-    if(typeof handler === &#x27;string&#x27;){
+    if(typeof handler === 'string'){
         handler = handlers.getHandlerFromString(handler);
     }
 
@@ -2108,8 +2101,8 @@ function(err, collaboratingProcesses){
     if (processDefinitions.length === 1) {
         processDefinition = processDefinitions[0];
     } else {
-        error = new Error(&#x22;The BPMN file &#x27;&#x22; + bpmnFilePath + &#x22;&#x27;. contains more than one process definition. Use &#x27;createCollaboratingProcesses
-&#x27; instead of &#x27;createProcess&#x27;&#x22;);
+        error = new Error("The BPMN file '" + bpmnFilePath + "'. contains more than one process definition. Use 'createCollaboratingProcesses
+' instead of 'createProcess'");
         if(!callback) {
             throw error;
         } else {
@@ -2132,13 +2125,13 @@ function(err, collaboratingProcesses){
 then this process can be created by
 
 
-	var bpmn = require(&#x22;bpmn&#x22;);
+	var bpmn = require("bpmn");
 	// We assume there is a myProcess.js besides myProcess.bpmn that contains the handlers
-	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcess</span>(&#x22;path/to/myProcess.bpmn&#x22;, function(err, myProcess
+	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcess</span>("path/to/myProcess.bpmn", function(err, myProcess
 ){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
 	});
 
@@ -2157,17 +2150,17 @@ The handler file looks like:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createUnmanagedProcessFromXML = function (bpmnXML, handler, callback) {
     var processDefinition, error;
-    var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML, &#x22;Standalone&#x22;);
+    var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML, "Standalone");
 
     if (processDefinitions.length === 1) {
         processDefinition = processDefinitions[0];
     } else {
-        error = new Error(&#x22;The BPMN XML contains more than one process definition. Use &#x27;createCollaboratingProcesses&#x27; instead of
- &#x27;createProcess&#x27;&#x22;);
+        error = new Error("The BPMN XML contains more than one process definition. Use 'createCollaboratingProcesses' instead of
+ 'createProcess'");
         return callback(error);
     }
 
-    if(typeof handler === &#x27;string&#x27;) {
+    if(typeof handler === 'string') {
         handler = handlers.getHandlerFromString(handler);
     }
 
@@ -2185,11 +2178,11 @@ Processes can also be created from an xml string instead of file. In this case t
  that would be parsed.
 
 
-	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcessFromXML</span>(&#x22;&#x3c;definitions ... &#x3c;/definitions&#x3e
-;&#x22;, &#x22;exports.MyStart = ...&#x22;, function(err, myProcess){
+	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcessFromXML</span>("&lt;definitions ... &lt;/definitions&gt;
+;", "exports.MyStart = ...", function(err, myProcess){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
 	});
 ...</pre></li>
@@ -2241,8 +2234,8 @@ var handlerName = handler.<span class="apidocCodeKeywordSpan">mapName2HandlerNam
 var trx = self.currentTrx = null;
 
 if(self.transactionLogger){
-    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, &#x27;PSTATE&#x27;, &#x27;TRANSITION
-&#x27;, null, activityName+&#x27;Done&#x27;);
+    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, 'PSTATE', 'TRANSITION
+', null, activityName+'Done');
 }
 
 if (self.state.hasTokens(activityName)) {
@@ -2337,7 +2330,7 @@ if (self.state.hasTokens(activityName)) {
 
     options.handlerFilePath.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.filePath){
-            throw new Error(&#x22;handlerFilePath needs a name and a filePath&#x22;);
+            throw new Error("handlerFilePath needs a name and a filePath");
         }
 
         self.addHandlerFilePath(handlerDescriptor.name, handlerDescriptor.filePath);
@@ -2354,7 +2347,7 @@ if (self.state.hasTokens(activityName)) {
 
     options.handler.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.module){
-            throw new Error(&#x22;handler needs a name and a module&#x22;);
+            throw new Error("handler needs a name and a module");
         }
 
         self.addHandler(handlerDescriptor.name, handlerDescriptor.module);
@@ -2370,7 +2363,7 @@ if (self.state.hasTokens(activityName)) {
 
     options.handlerString.forEach(function(handlerString){
         if(!handlerString.name || !handlerString.string){
-            throw new Error(&#x22;handlerString needs a name and a string&#x22;);
+            throw new Error("handlerString needs a name and a string");
         }
 
         self.addHandlerString(handlerString.name, handlerString.string);
@@ -2400,7 +2393,7 @@ if (self.state.hasTokens(activityName)) {
 
     options.bpmnXML.forEach(function(bpmnXML){
         if(!bpmnXML.name || !bpmnXML.xml){
-            throw new Error(&#x22;bpmnXML needs a name and a xml&#x22;);
+            throw new Error("bpmnXML needs a name and a xml");
         }
 
         self.addBpmnXML(bpmnXML.xml, bpmnXML.name);
@@ -2416,12 +2409,12 @@ Process managers are used to create multiple processes using the same definition
 
     var manager = new bpmn.<span class="apidocCodeKeywordSpan">ProcessManager</span>();
 
-    manager.addBpmnFilePath(&#x22;path/to/myProcess.bpmn&#x22;);
+    manager.addBpmnFilePath("path/to/myProcess.bpmn");
 
-    manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
+    manager.createProcess("myId", function(err, myProcess){
 
 // we start the process
-myProcess.triggerEvent(&#x22;MyStart&#x22;);
+myProcess.triggerEvent("MyStart");
 ...</pre></li>
     </ul>
 
@@ -2507,7 +2500,7 @@ ProcessManager.prototype.get = function get(processId, callback) {
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    err = new Error(&#x27;id already used&#x27;);
+    err = new Error('id already used');
 }
             });
             if(err){
@@ -2522,7 +2515,7 @@ if(err){
 
 descriptors.forEach(function(descriptor){             // check if one of the ids is already used
     if(self._processCache[descriptor.id]){          // again because a process could have been created in between
-        err = new Error(&#x27;id already used&#x27;);
+        err = new Error('id already used');
 ...</pre></li>
     </ul>
 
@@ -2557,7 +2550,7 @@ if(err){
 }
 
 if(self._processCache[bpmnProcess.getProcessId()]){                  // check if id already used
-    return done(new Error(&#x27;duplicated id in persisted data&#x27;));
+    return done(new Error('duplicated id in persisted data'));
 }
 ...</pre></li>
     </ul>
@@ -2619,7 +2612,7 @@ callback(null, bpmnProcesses.map(function (bpmnProcess) {
 
     self._definitionsToInitialize.push(processDefinition);
 
-    if(!self._initialising){    // if already initialising we don&#x27;t call next, the definition will be initialised after current
+    if(!self._initialising){    // if already initialising we don't call next, the definition will be initialised after current
 one.
         next();
     }
@@ -2677,7 +2670,7 @@ persisted document found
                     }
 
                     if(self._processCache[bpmnProcess.getProcessId()]){                  // check if id already used
-                        return done(new Error(&#x27;duplicated id in persisted data&#x27;));
+                        return done(new Error('duplicated id in persisted data'));
                     }
 
                     self._processCache[bpmnProcess.getProcessId()] = bpmnProcess;
@@ -2702,8 +2695,8 @@ persisted document found
        if(processHandler) {
            self._processHandlers[processDefinition.name] = processHandler;
        } else if(!self._processHandlers[processDefinition.name]){
-           throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process
- handler must be defined before the process or with the process.&#x27;);
+           throw new Error('No process handler defined for process "'+processDefinition.name+'". The process
+ handler must be defined before the process or with the process.');
        }
 
        self.<span class="apidocCodeKeywordSpan">_initialiseDefinition</span>(processDefinition);
@@ -2731,7 +2724,7 @@ persisted document found
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromFile(processHandler);
     }
 
@@ -2750,8 +2743,8 @@ persisted document found
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -2765,12 +2758,12 @@ Process managers are used to create multiple processes using the same definition
 
 var manager = new bpmn.ProcessManager();
 
-manager.<span class="apidocCodeKeywordSpan">addBpmnFilePath</span>(&#x22;path/to/myProcess.bpmn&#x22;);
+manager.<span class="apidocCodeKeywordSpan">addBpmnFilePath</span>("path/to/myProcess.bpmn");
 
-manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
+manager.createProcess("myId", function(err, myProcess){
 
     // we start the process
-    myProcess.triggerEvent(&#x22;MyStart&#x22;);
+    myProcess.triggerEvent("MyStart");
 
 });
 ...</pre></li>
@@ -2789,7 +2782,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromString(processHandler);
     }
 
@@ -2800,8 +2793,8 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -2812,7 +2805,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
 
    options.bpmnXML.forEach(function(bpmnXML){
        if(!bpmnXML.name || !bpmnXML.xml){
-           throw new Error(&#x22;bpmnXML needs a name and a xml&#x22;);
+           throw new Error("bpmnXML needs a name and a xml");
        }
 
        self.<span class="apidocCodeKeywordSpan">addBpmnXML</span>(bpmnXML.xml, bpmnXML.name);
@@ -2845,7 +2838,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
 
 options.handler.forEach(function(handlerDescriptor){
     if(!handlerDescriptor.name || !handlerDescriptor.module){
-        throw new Error(&#x22;handler needs a name and a module&#x22;);
+        throw new Error("handler needs a name and a module");
     }
 
     self.<span class="apidocCodeKeywordSpan">addHandler</span>(handlerDescriptor.name, handlerDescriptor.module);
@@ -2876,7 +2869,7 @@ if(!util.isArray(options.handlerString)){
     <li>example usage<pre class="apidocCodePre">...
 
     var manager = new bpmn.ProcessManager({
-        bpmnFilePath: &#x22;path/to/myProcess.bpmn&#x22;
+        bpmnFilePath: "path/to/myProcess.bpmn"
     });
 
 
@@ -2911,7 +2904,7 @@ ProcessManager.addHandlerString = function(name, handlerString)
 
 options.handlerString.forEach(function(handlerString){
     if(!handlerString.name || !handlerString.string){
-        throw new Error(&#x22;handlerString needs a name and a string&#x22;);
+        throw new Error("handlerString needs a name and a string");
     }
 
     self.<span class="apidocCodeKeywordSpan">addHandlerString</span>(handlerString.name, handlerString.string);
@@ -2941,15 +2934,15 @@ if(!options.bpmnFilePath){
             return callback(err);
         }
 
-        if (typeof descriptors === &#x27;string&#x27; &#x26;&#x26; Object.keys(self._processDefinitions).length !== 1) {
-            return callback(new Error(&#x22;The manager contains more than one process definition. &#x22; +
-                &#x22;processId have to be an Array.&#x3c;{name: String, id: String}&#x3e;} &#x22;));
+        if (typeof descriptors === 'string' &amp;&amp; Object.keys(self._processDefinitions).length !== 1) {
+            return callback(new Error("The manager contains more than one process definition. " +
+                "processId have to be an Array.&lt;{name: String, id: String}&gt;} "));
         }
 
         if(util.isArray(descriptors)) {
             descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                 if(self._processCache[descriptor.id]){
-                    err = new Error(&#x27;id already used&#x27;);
+                    err = new Error('id already used');
                 }
             });
             if(err){
@@ -2963,7 +2956,7 @@ if(!options.bpmnFilePath){
 
                 descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                     if(self._processCache[descriptor.id]){          // again because a process could have been created in between
-                        err = new Error(&#x27;id already used&#x27;);
+                        err = new Error('id already used');
                     }
                 });
                 if(err){
@@ -2979,7 +2972,7 @@ if(!options.bpmnFilePath){
             return;
         }
 
-        if(typeof descriptors === &#x27;string&#x27;) {
+        if(typeof descriptors === 'string') {
             descriptors = {
                 id: descriptors,
                 name: Object.keys(self._processDefinitions)[0]
@@ -2987,7 +2980,7 @@ if(!options.bpmnFilePath){
         }
 
         if(self._processCache[descriptors.id]){                                        // check if id already used
-            return callback(new Error(&#x27;id already used&#x27;));
+            return callback(new Error('id already used'));
         }
 
         self._createSingleProcess(descriptors.id, descriptors.name, function(err, bpmnProcess){
@@ -2996,7 +2989,7 @@ if(!options.bpmnFilePath){
             }
 
             if(self._processCache[descriptors.id]){                                      // check if id already used
-                return callback(new Error(&#x27;id already used&#x27;));                      // again because a process could have been created
+                return callback(new Error('id already used'));                      // again because a process could have been created
  in between
             }
 
@@ -3011,12 +3004,12 @@ Process managers are used to create multiple processes using the same definition
 
     var manager = new bpmn.ProcessManager();
 
-    manager.addBpmnFilePath(&#x22;path/to/myProcess.bpmn&#x22;);
+    manager.addBpmnFilePath("path/to/myProcess.bpmn");
 
-    manager.<span class="apidocCodeKeywordSpan">createProcess</span>(&#x22;myId&#x22;, function(err, myProcess){
+    manager.<span class="apidocCodeKeywordSpan">createProcess</span>("myId", function(err, myProcess){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
     });
 
@@ -3047,7 +3040,7 @@ The above API can also be called by REST HTTP calls. To do this, you have first 
 	// Returns a restify server.
 	var server = manager.<span class="apidocCodeKeywordSpan">createServer</span>();
 	server.listen(9009, function() {
-    	console.log(&#x27;%s listening at %s&#x27;, server.name, server.url);
+    	console.log('%s listening at %s', server.name, server.url);
 	});
 
 The server is a node restify server. So all features of this package can be used.
@@ -3067,7 +3060,7 @@ The full signature of `createProcess`  is
     <li>description and source-code<pre class="apidocCodePre">findByName = function (processName, caseSensitive, callback) {
     var self = this;
 
-    if(typeof caseSensitive === &#x27;function&#x27;){
+    if(typeof caseSensitive === 'function'){
         callback = caseSensitive;
         caseSensitive = true;
     }
@@ -3418,7 +3411,7 @@ ProcessManager.prototype.get = function get(processId, callback) {
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    err = new Error(&#x27;id already used&#x27;);
+    err = new Error('id already used');
 }
             });
             if(err){
@@ -3433,7 +3426,7 @@ if(err){
 
 descriptors.forEach(function(descriptor){             // check if one of the ids is already used
     if(self._processCache[descriptor.id]){          // again because a process could have been created in between
-        err = new Error(&#x27;id already used&#x27;);
+        err = new Error('id already used');
 ...</pre></li>
     </ul>
 
@@ -3473,7 +3466,7 @@ if(err){
 }
 
 if(self._processCache[bpmnProcess.getProcessId()]){                  // check if id already used
-    return done(new Error(&#x27;duplicated id in persisted data&#x27;));
+    return done(new Error('duplicated id in persisted data'));
 }
 ...</pre></li>
     </ul>
@@ -3545,7 +3538,7 @@ callback(null, bpmnProcesses.map(function (bpmnProcess) {
 
     self._definitionsToInitialize.push(processDefinition);
 
-    if(!self._initialising){    // if already initialising we don&#x27;t call next, the definition will be initialised after current
+    if(!self._initialising){    // if already initialising we don't call next, the definition will be initialised after current
 one.
         next();
     }
@@ -3603,7 +3596,7 @@ persisted document found
                     }
 
                     if(self._processCache[bpmnProcess.getProcessId()]){                  // check if id already used
-                        return done(new Error(&#x27;duplicated id in persisted data&#x27;));
+                        return done(new Error('duplicated id in persisted data'));
                     }
 
                     self._processCache[bpmnProcess.getProcessId()] = bpmnProcess;
@@ -3628,8 +3621,8 @@ persisted document found
        if(processHandler) {
            self._processHandlers[processDefinition.name] = processHandler;
        } else if(!self._processHandlers[processDefinition.name]){
-           throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process
- handler must be defined before the process or with the process.&#x27;);
+           throw new Error('No process handler defined for process "'+processDefinition.name+'". The process
+ handler must be defined before the process or with the process.');
        }
 
        self.<span class="apidocCodeKeywordSpan">_initialiseDefinition</span>(processDefinition);
@@ -3662,7 +3655,7 @@ persisted document found
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromFile(processHandler);
     }
 
@@ -3681,8 +3674,8 @@ persisted document found
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -3696,12 +3689,12 @@ Process managers are used to create multiple processes using the same definition
 
 var manager = new bpmn.ProcessManager();
 
-manager.<span class="apidocCodeKeywordSpan">addBpmnFilePath</span>(&#x22;path/to/myProcess.bpmn&#x22;);
+manager.<span class="apidocCodeKeywordSpan">addBpmnFilePath</span>("path/to/myProcess.bpmn");
 
-manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
+manager.createProcess("myId", function(err, myProcess){
 
     // we start the process
-    myProcess.triggerEvent(&#x22;MyStart&#x22;);
+    myProcess.triggerEvent("MyStart");
 
 });
 ...</pre></li>
@@ -3725,7 +3718,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
     var self = this;
     var processDefinitions;
 
-    if(typeof processHandler === &#x27;string&#x27;){
+    if(typeof processHandler === 'string'){
         processHandler = handlers.getHandlerFromString(processHandler);
     }
 
@@ -3736,8 +3729,8 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
         if(processHandler) {
             self._processHandlers[processDefinition.name] = processHandler;
         } else if(!self._processHandlers[processDefinition.name]){
-            throw new Error(&#x27;No process handler defined for process &#x22;&#x27;+processDefinition.name+&#x27;&#x22;. The process handler must be defined
- before the process or with the process.&#x27;);
+            throw new Error('No process handler defined for process "'+processDefinition.name+'". The process handler must be defined
+ before the process or with the process.');
         }
 
         self._initialiseDefinition(processDefinition);
@@ -3748,7 +3741,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
 
    options.bpmnXML.forEach(function(bpmnXML){
        if(!bpmnXML.name || !bpmnXML.xml){
-           throw new Error(&#x22;bpmnXML needs a name and a xml&#x22;);
+           throw new Error("bpmnXML needs a name and a xml");
        }
 
        self.<span class="apidocCodeKeywordSpan">addBpmnXML</span>(bpmnXML.xml, bpmnXML.name);
@@ -3786,7 +3779,7 @@ manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
 
 options.handler.forEach(function(handlerDescriptor){
     if(!handlerDescriptor.name || !handlerDescriptor.module){
-        throw new Error(&#x22;handler needs a name and a module&#x22;);
+        throw new Error("handler needs a name and a module");
     }
 
     self.<span class="apidocCodeKeywordSpan">addHandler</span>(handlerDescriptor.name, handlerDescriptor.module);
@@ -3822,7 +3815,7 @@ if(!util.isArray(options.handlerString)){
     <li>example usage<pre class="apidocCodePre">...
 
     var manager = new bpmn.ProcessManager({
-        bpmnFilePath: &#x22;path/to/myProcess.bpmn&#x22;
+        bpmnFilePath: "path/to/myProcess.bpmn"
     });
 
 
@@ -3862,7 +3855,7 @@ ProcessManager.addHandlerString = function(name, handlerString)
 
 options.handlerString.forEach(function(handlerString){
     if(!handlerString.name || !handlerString.string){
-        throw new Error(&#x22;handlerString needs a name and a string&#x22;);
+        throw new Error("handlerString needs a name and a string");
     }
 
     self.<span class="apidocCodeKeywordSpan">addHandlerString</span>(handlerString.name, handlerString.string);
@@ -3897,15 +3890,15 @@ if(!options.bpmnFilePath){
             return callback(err);
         }
 
-        if (typeof descriptors === &#x27;string&#x27; &#x26;&#x26; Object.keys(self._processDefinitions).length !== 1) {
-            return callback(new Error(&#x22;The manager contains more than one process definition. &#x22; +
-                &#x22;processId have to be an Array.&#x3c;{name: String, id: String}&#x3e;} &#x22;));
+        if (typeof descriptors === 'string' &amp;&amp; Object.keys(self._processDefinitions).length !== 1) {
+            return callback(new Error("The manager contains more than one process definition. " +
+                "processId have to be an Array.&lt;{name: String, id: String}&gt;} "));
         }
 
         if(util.isArray(descriptors)) {
             descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                 if(self._processCache[descriptor.id]){
-                    err = new Error(&#x27;id already used&#x27;);
+                    err = new Error('id already used');
                 }
             });
             if(err){
@@ -3919,7 +3912,7 @@ if(!options.bpmnFilePath){
 
                 descriptors.forEach(function(descriptor){             // check if one of the ids is already used
                     if(self._processCache[descriptor.id]){          // again because a process could have been created in between
-                        err = new Error(&#x27;id already used&#x27;);
+                        err = new Error('id already used');
                     }
                 });
                 if(err){
@@ -3935,7 +3928,7 @@ if(!options.bpmnFilePath){
             return;
         }
 
-        if(typeof descriptors === &#x27;string&#x27;) {
+        if(typeof descriptors === 'string') {
             descriptors = {
                 id: descriptors,
                 name: Object.keys(self._processDefinitions)[0]
@@ -3943,7 +3936,7 @@ if(!options.bpmnFilePath){
         }
 
         if(self._processCache[descriptors.id]){                                        // check if id already used
-            return callback(new Error(&#x27;id already used&#x27;));
+            return callback(new Error('id already used'));
         }
 
         self._createSingleProcess(descriptors.id, descriptors.name, function(err, bpmnProcess){
@@ -3952,7 +3945,7 @@ if(!options.bpmnFilePath){
             }
 
             if(self._processCache[descriptors.id]){                                      // check if id already used
-                return callback(new Error(&#x27;id already used&#x27;));                      // again because a process could have been created
+                return callback(new Error('id already used'));                      // again because a process could have been created
  in between
             }
 
@@ -3967,12 +3960,12 @@ Process managers are used to create multiple processes using the same definition
 
     var manager = new bpmn.ProcessManager();
 
-    manager.addBpmnFilePath(&#x22;path/to/myProcess.bpmn&#x22;);
+    manager.addBpmnFilePath("path/to/myProcess.bpmn");
 
-    manager.<span class="apidocCodeKeywordSpan">createProcess</span>(&#x22;myId&#x22;, function(err, myProcess){
+    manager.<span class="apidocCodeKeywordSpan">createProcess</span>("myId", function(err, myProcess){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
     });
 
@@ -4008,7 +4001,7 @@ The above API can also be called by REST HTTP calls. To do this, you have first 
 	// Returns a restify server.
 	var server = manager.<span class="apidocCodeKeywordSpan">createServer</span>();
 	server.listen(9009, function() {
-    	console.log(&#x27;%s listening at %s&#x27;, server.name, server.url);
+    	console.log('%s listening at %s', server.name, server.url);
 	});
 
 The server is a node restify server. So all features of this package can be used.
@@ -4033,7 +4026,7 @@ The full signature of `createProcess`  is
     <li>description and source-code<pre class="apidocCodePre">findByName = function (processName, caseSensitive, callback) {
     var self = this;
 
-    if(typeof caseSensitive === &#x27;function&#x27;){
+    if(typeof caseSensitive === 'function'){
         callback = caseSensitive;
         caseSensitive = true;
     }
@@ -4415,12 +4408,12 @@ BPMN also supports collaborating processes as depicted below.
 These processes must be created together:
 
 	// create collaborating processes
-bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedCollaboratingProcesses</span>(&#x22;my/collaboration/example.bpmn&#x22;,
+bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedCollaboratingProcesses</span>("my/collaboration/example.bpmn",
 function(err, collaboratingProcesses){
 
     // start the second process
     var secondProcess = collaboratingProcesses[1];
-    secondProcess.triggerEvent(&#x22;Start Event 2&#x22;);
+    secondProcess.triggerEvent("Start Event 2");
 
 });
 ...</pre></li>
@@ -4444,7 +4437,7 @@ function(err, collaboratingProcesses){
     var processes = {};
     var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML);
 
-    if(typeof handler === &#x27;string&#x27;){
+    if(typeof handler === 'string'){
         handler = handlers.getHandlerFromString(handler);
     }
 
@@ -4499,8 +4492,8 @@ function(err, collaboratingProcesses){
     if (processDefinitions.length === 1) {
         processDefinition = processDefinitions[0];
     } else {
-        error = new Error(&#x22;The BPMN file &#x27;&#x22; + bpmnFilePath + &#x22;&#x27;. contains more than one process definition. Use &#x27;createCollaboratingProcesses
-&#x27; instead of &#x27;createProcess&#x27;&#x22;);
+        error = new Error("The BPMN file '" + bpmnFilePath + "'. contains more than one process definition. Use 'createCollaboratingProcesses
+' instead of 'createProcess'");
         if(!callback) {
             throw error;
         } else {
@@ -4523,13 +4516,13 @@ function(err, collaboratingProcesses){
 then this process can be created by
 
 
-	var bpmn = require(&#x22;bpmn&#x22;);
+	var bpmn = require("bpmn");
 	// We assume there is a myProcess.js besides myProcess.bpmn that contains the handlers
-	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcess</span>(&#x22;path/to/myProcess.bpmn&#x22;, function(err, myProcess
+	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcess</span>("path/to/myProcess.bpmn", function(err, myProcess
 ){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
 	});
 
@@ -4553,17 +4546,17 @@ The handler file looks like:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createUnmanagedProcessFromXML = function (bpmnXML, handler, callback) {
     var processDefinition, error;
-    var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML, &#x22;Standalone&#x22;);
+    var processDefinitions = definitions.getBPMNDefinitionsFromXML(bpmnXML, "Standalone");
 
     if (processDefinitions.length === 1) {
         processDefinition = processDefinitions[0];
     } else {
-        error = new Error(&#x22;The BPMN XML contains more than one process definition. Use &#x27;createCollaboratingProcesses&#x27; instead of
- &#x27;createProcess&#x27;&#x22;);
+        error = new Error("The BPMN XML contains more than one process definition. Use 'createCollaboratingProcesses' instead of
+ 'createProcess'");
         return callback(error);
     }
 
-    if(typeof handler === &#x27;string&#x27;) {
+    if(typeof handler === 'string') {
         handler = handlers.getHandlerFromString(handler);
     }
 
@@ -4581,11 +4574,11 @@ Processes can also be created from an xml string instead of file. In this case t
  that would be parsed.
 
 
-	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcessFromXML</span>(&#x22;&#x3c;definitions ... &#x3c;/definitions&#x3e
-;&#x22;, &#x22;exports.MyStart = ...&#x22;, function(err, myProcess){
+	bpmn.<span class="apidocCodeKeywordSpan">createUnmanagedProcessFromXML</span>("&lt;definitions ... &lt;/definitions&gt;
+;", "exports.MyStart = ...", function(err, myProcess){
 
         // we start the process
-        myProcess.triggerEvent(&#x22;MyStart&#x22;);
+        myProcess.triggerEvent("MyStart");
 
 	});
 ...</pre></li>
@@ -4622,7 +4615,7 @@ Processes can also be created from an xml string instead of file. In this case t
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">createDebuggerInterface = function (node, fileName) {
-    return (new DebuggerInterface(parserUtils.getAttributesValue(node, &#x22;href&#x22;), fileName));
+    return (new DebuggerInterface(parserUtils.getAttributesValue(node, "href"), fileName));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4637,7 +4630,7 @@ Processes can also be created from an xml string instead of file. In this case t
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isDebuggerElement = function (node) {
-    return (node.uri === &#x27;http://e2e.ch/bpmneditor/debugger&#x27; &#x26;&#x26; node.local === &#x27;position&#x27;);
+    return (node.uri === 'http://e2e.ch/bpmneditor/debugger' &amp;&amp; node.local === 'position');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4819,28 +4812,28 @@ bpmn.getAllProcesses(function(err, processes){
     <li>description and source-code<pre class="apidocCodePre">callHandler = function (name, process, data, handlerDoneCallback) {
     var result, handlerType;
     var done = handlerDoneCallback || function() {};
-    var eventType = &#x22;callHandler&#x22;;
+    var eventType = "callHandler";
     var handler = getHandlerFromProcess(name, process);
 
     if (handler) {
         handlerType = typeof handler;
-        if (handlerType === &#x27;function&#x27;) {
+        if (handlerType === 'function') {
             try {
                 result = handler.call(process.processClient, data, done);
             } catch (error) {
-                process.logger.error(&#x22;Error in handler &#x27;&#x22; + name + &#x22;&#x27;: &#x22; + error.toString());
+                process.logger.error("Error in handler '" + name + "': " + error.toString());
                 process.defaultErrorHandler.call(process.processClient, error, done);
             }
-        } else if (handlerType === &#x27;object&#x27;) {
+        } else if (handlerType === 'object') {
             // hierarchical handler used for mocking up sub process handlers. See test cases for examples
             // To keep going we have to call done()
             done();
         } else {
             process.callDefaultEventHandler(eventType, name, mapName2HandlerName(name),
-                                            &#x22;Unknown handler type: &#x27;&#x22; + handlerType + &#x22;&#x27;&#x22;, done);
+                                            "Unknown handler type: '" + handlerType + "'", done);
         }
      } else {
-        process.callDefaultEventHandler(eventType, name, mapName2HandlerName(name), &#x22;No handler found&#x22;, done);
+        process.callDefaultEventHandler(eventType, name, mapName2HandlerName(name), "No handler found", done);
     }
 
     return result;
@@ -4849,15 +4842,15 @@ bpmn.getAllProcesses(function(err, processes){
             trx.processStateEnd(self.processDefinition.name, self.getProcessId(), activityName);
             trx.end();
         }
-        self.logger.trace(&#x22;Calling done() of &#x27;&#x22; + handlerName + &#x22;&#x27;.&#x22;);
+        self.logger.trace("Calling done() of '" + handlerName + "'.");
         currentProcess._emitTokens(currentFlowObject, data, true);
     };
-    self.logger.trace(&#x22;Calling &#x27;&#x22; + handlerName + &#x22;&#x27; for &#x22; + ACTIVITY_END_EVENT + &#x22; &#x27;&#x22
-; + activityName + &#x22;&#x27;.&#x22;);
+    self.logger.trace("Calling '" + handlerName + "' for " + ACTIVITY_END_EVENT + " '"
+; + activityName + "'.");
     handler.<span class="apidocCodeKeywordSpan">callHandler</span>(handlerName, currentProcess, data, activityEndHandlerIsDone);
 } else {
     self.callDefaultEventHandler(ACTIVITY_END_EVENT, activityName, handlerName,
-        &#x22;Process cannot handle this activity because it is not currently executed.&#x22;,
+        "Process cannot handle this activity because it is not currently executed.",
         function(){
             if(trx){
                 trx.end();
@@ -4875,7 +4868,7 @@ bpmn.getAllProcesses(function(err, processes){
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getHandlerFileName = function (bpmnFilePath) {
-    return (fileUtils.removeFileExtension(bpmnFilePath) + &#x22;.js&#x22;);
+    return (fileUtils.removeFileExtension(bpmnFilePath) + ".js");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4939,7 +4932,7 @@ ProcessManager.prototype.addHandlerFilePath = function(name, handlerFilePath){
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getHandlerFromString = function (moduleString) {
-    var Module = require(&#x27;module&#x27;).Module;
+    var Module = require('module').Module;
     var handlerModule = new Module();
     handlerModule._compile(stripBOM(moduleString));
     return handlerModule.exports;
@@ -4973,10 +4966,10 @@ ProcessManager.prototype.addHandlerString = function(name, handlerString){
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mapName2HandlerName = function (name) {
-    var cleanName = name.replace(/[:!`~\^@*#¢¬ç?¦\|&#x26;;%@&#x22;&#x3c;&#x3e;\(\){}\[\]\+, \t\n]/g, &#x22;_&#x22;);
+    var cleanName = name.replace(/[:!`~\^@*#Â¢Â¬Ã§?Â¦\|&amp;;%@"&lt;&gt;\(\){}\[\]\+, \t\n]/g, "_");
 
     if (cleanName.match(/^[0-9]/)) {
-        cleanName = &#x22;_&#x22; + cleanName;
+        cleanName = "_" + cleanName;
     }
     return cleanName;
 }</pre></li>
@@ -4993,8 +4986,8 @@ var handlerName = handler.<span class="apidocCodeKeywordSpan">mapName2HandlerNam
 var trx = self.currentTrx = null;
 
 if(self.transactionLogger){
-    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, &#x27;PSTATE&#x27;, &#x27;TRANSITION
-&#x27;, null, activityName+&#x27;Done&#x27;);
+    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, 'PSTATE', 'TRANSITION
+', null, activityName+'Done');
 }
 
 if (self.state.hasTokens(activityName)) {
@@ -5018,7 +5011,7 @@ if (self.state.hasTokens(activityName)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">BPMNProcessHistory = function (history) {
-    /** @type {Array.&#x3c;HistoryEntry&#x3e;} */
+    /** @type {Array.&lt;HistoryEntry&gt;} */
     this.historyEntries = [];
 
     if (history) {
@@ -5067,7 +5060,7 @@ if (self.state.hasTokens(activityName)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">setDummyTimestampFunction = function () {
-    getTimestamp = function () { return &#x22;_dummy_ts_&#x22;; };
+    getTimestamp = function () { return "_dummy_ts_"; };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5111,9 +5104,9 @@ if (self.state.hasTokens(activityName)) {
     this.logAppender = null; // used for example to test log messages
 
     this.winstonFileTransport = new (winston.transports.File)({
-        //level: getLogLevelString(this.logLevel), //TODO: this should work, but it doesn&#x27;t. Why?
-        level: &#x27;verbose&#x27;,
-        filename: &#x27;./process.log&#x27;,
+        //level: getLogLevelString(this.logLevel), //TODO: this should work, but it doesn't. Why?
+        level: 'verbose',
+        filename: './process.log',
         maxsize: 64 * 1024 * 1024,
         maxFiles: 100,
         timestamp: function() {
@@ -5121,8 +5114,8 @@ if (self.state.hasTokens(activityName)) {
         }
     });
     this.winstonConsoleTransport = new (winston.transports.Console)({
-        //level: getLogLevelString(this.logLevel), //TODO: this should work, but it doesn&#x27;t. Why?
-        level: &#x27;verbose&#x27;,
+        //level: getLogLevelString(this.logLevel), //TODO: this should work, but it doesn't. Why?
+        level: 'verbose',
         colorize: true,
         json: false
     });
@@ -5203,7 +5196,7 @@ this.views = {
 
     options.handlerFilePath.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.filePath){
-            throw new Error(&#x22;handlerFilePath needs a name and a filePath&#x22;);
+            throw new Error("handlerFilePath needs a name and a filePath");
         }
 
         self.addHandlerFilePath(handlerDescriptor.name, handlerDescriptor.filePath);
@@ -5220,7 +5213,7 @@ this.views = {
 
     options.handler.forEach(function(handlerDescriptor){
         if(!handlerDescriptor.name || !handlerDescriptor.module){
-            throw new Error(&#x22;handler needs a name and a module&#x22;);
+            throw new Error("handler needs a name and a module");
         }
 
         self.addHandler(handlerDescriptor.name, handlerDescriptor.module);
@@ -5236,7 +5229,7 @@ this.views = {
 
     options.handlerString.forEach(function(handlerString){
         if(!handlerString.name || !handlerString.string){
-            throw new Error(&#x22;handlerString needs a name and a string&#x22;);
+            throw new Error("handlerString needs a name and a string");
         }
 
         self.addHandlerString(handlerString.name, handlerString.string);
@@ -5266,7 +5259,7 @@ this.views = {
 
     options.bpmnXML.forEach(function(bpmnXML){
         if(!bpmnXML.name || !bpmnXML.xml){
-            throw new Error(&#x22;bpmnXML needs a name and a xml&#x22;);
+            throw new Error("bpmnXML needs a name and a xml");
         }
 
         self.addBpmnXML(bpmnXML.xml, bpmnXML.name);
@@ -5282,12 +5275,12 @@ Process managers are used to create multiple processes using the same definition
 
     var manager = new bpmn.<span class="apidocCodeKeywordSpan">ProcessManager</span>();
 
-    manager.addBpmnFilePath(&#x22;path/to/myProcess.bpmn&#x22;);
+    manager.addBpmnFilePath("path/to/myProcess.bpmn");
 
-    manager.createProcess(&#x22;myId&#x22;, function(err, myProcess){
+    manager.createProcess("myId", function(err, myProcess){
 
 // we start the process
-myProcess.triggerEvent(&#x22;MyStart&#x22;);
+myProcess.triggerEvent("MyStart");
 ...</pre></li>
     </ul>
 
@@ -5321,8 +5314,8 @@ var handlerName = handler.<span class="apidocCodeKeywordSpan">mapName2HandlerNam
 var trx = self.currentTrx = null;
 
 if(self.transactionLogger){
-    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, &#x27;PSTATE&#x27;, &#x27;TRANSITION
-&#x27;, null, activityName+&#x27;Done&#x27;);
+    trx = self.currentTrx = self.transactionLogger.startTransaction(self.processDefinition.name, 'PSTATE', 'TRANSITION
+', null, activityName+'Done');
 }
 
 if (self.state.hasTokens(activityName)) {
@@ -5346,22 +5339,22 @@ if (self.state.hasTokens(activityName)) {
     <li>description and source-code<pre class="apidocCodePre">createBPMNProcess = function (id, processDefinition, eventHandler, persistency, parentProcess, parentToken, parentHistoryEntry, callback) {
     var bpmnProcess;
 
-    if(typeof persistency === &#x27;function&#x27; ){
+    if(typeof persistency === 'function' ){
         callback = persistency;
         persistency = null;
         parentProcess = null;
         parentToken = null;
         parentHistoryEntry = null;
-    } else if(typeof parentProcess === &#x27;function&#x27; ){
+    } else if(typeof parentProcess === 'function' ){
         callback = parentProcess;
         parentProcess = null;
         parentToken = null;
         parentHistoryEntry = null;
-    } else if(typeof parentToken === &#x27;function&#x27; ){
+    } else if(typeof parentToken === 'function' ){
         callback = parentToken;
         parentToken = null;
         parentHistoryEntry = null;
-    } else if(typeof parentHistoryEntry === &#x27;function&#x27; ){
+    } else if(typeof parentHistoryEntry === 'function' ){
         callback = parentHistoryEntry;
         parentHistoryEntry = null;
     }
@@ -5428,9 +5421,9 @@ if (self.state.hasTokens(activityName)) {
 
     logger = new log.Logger(null, settings);
     serverOptions = restifyOptions || {};
-    serverOptions.name = serverOptions.name || &#x22;BPMNProcessServer&#x22;;
+    serverOptions.name = serverOptions.name || "BPMNProcessServer";
 
-    // Shimming the log doesn&#x27;t work as expected: I cannot switch it off for example.
+    // Shimming the log doesn't work as expected: I cannot switch it off for example.
     // Additionally, the log format is horrible. So for the time being we use our own logging
     // serverOptions.log = serverOptions.log || bunyan2winston.createLogger(logger.winstonLogger);
 
@@ -5438,7 +5431,7 @@ if (self.state.hasTokens(activityName)) {
 
     server.use(restify.queryParser({ mapParams: false }));
     server.use(restify.bodyParser({ mapParams: false }));
-    server.on(&#x27;after&#x27;, function( request, response, route, error) {
+    server.on('after', function( request, response, route, error) {
         var handler = options.onServerAfterEvent || onServerAfterEvent;
         handler(logger, request, response, route, error);
     });
@@ -5446,7 +5439,7 @@ if (self.state.hasTokens(activityName)) {
     server.get(getProcessRoute,
         transactionLog.transactionLoggerMiddleware({
                 name: function(req){
-                    return &#x27;GET &#x27; + req.params.processName + &#x27; process&#x27;;
+                    return 'GET ' + req.params.processName + ' process';
                 }
             }),
         function(req, res, next){
@@ -5455,7 +5448,7 @@ if (self.state.hasTokens(activityName)) {
     server.get(getProcessesRoute,
         transactionLog.transactionLoggerMiddleware({
             name: function(req){
-                return &#x27;GET &#x27; + req.params.processName + &#x27; processes&#x27;;
+                return 'GET ' + req.params.processName + ' processes';
             }
         }),
         function(req, res, next){
@@ -5464,7 +5457,7 @@ if (self.state.hasTokens(activityName)) {
     server.put(sendMessageRoute,
         transactionLog.transactionLoggerMiddleware({
             name: function(req){
-                return &#x27;PUT &#x27; + req.params.messageName + &#x27; message to &#x27; + req.params.processName + &#x27; process&#x27;;
+                return 'PUT ' + req.params.messageName + ' message to ' + req.params.processName + ' process';
             }
         }),
         function(req, res, next) {
@@ -5472,11 +5465,11 @@ if (self.state.hasTokens(activityName)) {
         }
     );
 
-    // TODO: we need to change these routes.  the catch all &#x27;/&#x27; makes this load order dependent.
+    // TODO: we need to change these routes.  the catch all '/' makes this load order dependent.
     server.post(createAndStartCollaboratingProcessRoute,
       transactionLog.transactionLoggerMiddleware({
         name: function(req) {
-          return &#x27;POST create and start collaborating processes&#x27;;
+          return 'POST create and start collaborating processes';
         }
       }),
       function(req, res, next) {
@@ -5487,7 +5480,7 @@ if (self.state.hasTokens(activityName)) {
     server.post(createProcessRoute,
         transactionLog.transactionLoggerMiddleware({
             name: function(req){
-                return &#x27;POST create &#x27; + req.params.processName + &#x27; process&#x27;;
+                return 'POST create ' + req.params.processName + ' process';
             }
         }),
         function(req, res, next) {
@@ -5497,7 +5490,7 @@ if (self.state.hasTokens(activityName)) {
     server.post(createAndStartProcessRoute,
         transactionLog.transactionLoggerMiddleware({
             name: function(req){
-                return &#x27;POST create and start &#x27; + req.params.processName + &#x27; process&#x27;;
+                return 'POST create and start ' + req.params.processName + ' process';
             }
         }),
         function(req, res, next) {
@@ -5518,7 +5511,7 @@ The above API can also be called by REST HTTP calls. To do this, you have first 
 	// Returns a restify server.
 	var server = manager.<span class="apidocCodeKeywordSpan">createServer</span>();
 	server.listen(9009, function() {
-    	console.log(&#x27;%s listening at %s&#x27;, server.name, server.url);
+    	console.log('%s listening at %s', server.name, server.url);
 	});
 
 The server is a node restify server. So all features of this package can be used.
@@ -5541,8 +5534,8 @@ The full signature of `createProcess`  is
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">BPMNProcessState = function (state) {
-    /** @type {Array.&#x3c;Token&#x3e;} */
-    this.tokens = state &#x26;&#x26; state.tokens ? state.tokens : [];
+    /** @type {Array.&lt;Token&gt;} */
+    this.tokens = state &amp;&amp; state.tokens ? state.tokens : [];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5595,7 +5588,7 @@ The full signature of `createProcess`  is
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">BPMNPendingTimerEvents = function (bpmnProcess) {
-    /** @type {Array.&#x3c;Timeout&#x3e;} */
+    /** @type {Array.&lt;Timeout&gt;} */
     this.pendingTimeouts = {};
     this.bpmnProcess = bpmnProcess;
     this.setTimeoutIds = {};
@@ -5612,3 +5605,4 @@ The full signature of `createProcess`  is
     ]
 </div>
 </div>
+</body></html>
