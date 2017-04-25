@@ -1,6 +1,6 @@
 # npmdoc-bpmn
 
-#### api documentation for  [bpmn (v0.2.2)](https://github.com/e2ebridge/bpmn#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-bpmn.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-bpmn) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-bpmn.svg)](https://travis-ci.org/npmdoc/node-npmdoc-bpmn)
+#### basic api documentation for  [bpmn (v0.2.2)](https://github.com/e2ebridge/bpmn#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-bpmn.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-bpmn) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-bpmn.svg)](https://travis-ci.org/npmdoc/node-npmdoc-bpmn)
 
 #### BPMN 2.0 execution engine
 
@@ -81,7 +81,8 @@
         "url": "git+https://github.com/e2ebridge/bpmn.git"
     },
     "scripts": {},
-    "version": "0.2.2"
+    "version": "0.2.2",
+    "bin": {}
 }
 ```
 
